@@ -2,8 +2,10 @@
 Library     SeleniumLibrary
 Documentation       Suite description #automated tests for scout website
 
+
 *** Variables ***
 ${LOGIN URL}        https://scouts-test.futbolkolektyw.pl/en/login
+${SLACK}        https://app.slack.com/workspace-signin?redir=%2Fgantry%2Fauth%3Fapp%3Dclient%26lc%3D1690378834%26return_to%3D%252Fclient%252FT3X4CAKNU%252FC3XTEGXB6%26teams%3DTASA2Q716
 ${BROWSER}     Chrome
 ${EMAILINPUT}  xpath=//*[@id='login']
 ${PASSWORDINPUT}    xpath=//*[@id='password']
@@ -134,6 +136,7 @@ Dev team contact form
     Click On The Submit Button
     Wait Until Logo Appears
     Click On The Dev Team Contact Button
+    Open Slack Link
     Assert Dev Team Contact
     [Teardown]    Close Browser
 
@@ -141,6 +144,8 @@ Dev team contact form
 Open Login Page
     Open Browser    ${LOGIN URL}    ${BROWSER}
     Title Should Be     Scouts panel - sign in
+Open Slack Link
+    Open Browser        ${SLACK}    ${BROWSER}
 Type In Email Valid
     Input Text   ${EMAILINPUT}   user03@getnada.com
 Type In Email Invalid
@@ -233,6 +238,6 @@ Assert Leg Field
     Title Should Be     Add player
     Capture Page Screenshot     ${OUTPUTDIR}/selenium-screenshot-7.png
 Assert Dev Team Contact
-#    Wait Until Element Is Visible       ${SLACKLOGO}
+    Wait Until Page Contains Element        ${SLACKLOGO}
     Title Should Be    Dev team contact form
     Capture Page Screenshot     ${OUTPUTDIR}/selenium-screenshot-8.png
