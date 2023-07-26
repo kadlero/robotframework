@@ -4,7 +4,7 @@
 
 ![img.png](img.png)
 
-#####Fail of the Dev team contact form was expected (it should be reported as bug)
+##### Fail of the Dev team contact form was expected (it should be reported as bug)
 
 
  
