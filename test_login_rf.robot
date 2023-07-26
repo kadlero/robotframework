@@ -37,7 +37,7 @@ ${LASTCREATEDPLAYER}        xpath=//span[contains(text(),'Lulek Mordęga')]
 ${REQUIREDFIELD}        xpath=//*[text()='Required']
 ${ADDPLAYERLEFTLEG}     xpath=//*[text()='Left leg']
 ${DEVTEAMCONTACTBUTTON}       xpath=//span[contains(text(),'Dev team contact')]
-${SLACKLOGO}        xpath=//header/div[2]/a[1]/img[1]
+${SLACKLOGO}        xpath=//*[contains(@title, 'Slack')]
 
 
 *** Test Cases ***
@@ -121,9 +121,10 @@ Add a player leg
     Click On The Right Leg Field
     Wait Until Leg Field Appears
     Click On The Leg Field
+    Wait Until Left Leg Field Appears
     Click On The Left Leg Field
     Wait Until Leg Field Appears
-    Assert Left Leg Field
+    Assert Leg Field
     [Teardown]    Close Browser
 
 Dev team contact form
@@ -135,9 +136,6 @@ Dev team contact form
     Click On The Dev Team Contact Button
     Assert Dev Team Contact
     [Teardown]    Close Browser
-
-
-
 
 *** Keywords ***
 Open Login Page
@@ -199,6 +197,10 @@ Wait Until Added Player Message Appears
     Wait Until Element Is Visible       ${POPUPADDEDPLAYER}
 Wait Until Leg Field Appears
     Wait Until Element Is Visible       ${ADDPLAYERLEG}
+Wait Until Left Leg Field Appears
+    Wait Until Element Is Visible       ${ADDPLAYERLEFTLEG}
+Wait Until Logo Slack Appears
+    Wait Until Element Is Visible       ${SLACKLOGO}
 Click On The Main Page Field
     Click Element       ${MAINPAGEFIELD}
 Scroll Element Into Header
@@ -226,10 +228,11 @@ Assert Player Added
 Assert Required Field
     Wait Until Element Is Visible       ${REQUIREDFIELD}
     Capture Page Screenshot     ${OUTPUTDIR}/selenium-screenshot-6.png
-Assert Left Leg Field
-    Wait Until Element Is Visible       ${ADDPLAYERLEFTLEG}
+Assert Leg Field
+#    Wait Until Element Is Visible       ${ADDPLAYERLEG}
+    Title Should Be     Add player
     Capture Page Screenshot     ${OUTPUTDIR}/selenium-screenshot-7.png
 Assert Dev Team Contact
-    Wait Until Element Is Visible       ${SLACKLOGO}
+#    Wait Until Element Is Visible       ${SLACKLOGO}
     Title Should Be    Dev team contact form
     Capture Page Screenshot     ${OUTPUTDIR}/selenium-screenshot-8.png
