@@ -4,7 +4,7 @@ Documentation       Suite description #automated tests for scout website
 
 
 *** Variables ***
-${LOGIN URL}        https://scouts-test.futbolkolektyw.pl/en/login
+${LOGIN URL}        https://dareit.futbolkolektyw.pl/
 ${SLACK}        https://app.slack.com/workspace-signin?redir=%2Fgantry%2Fauth%3Fapp%3Dclient%26lc%3D1690378834%26return_to%3D%252Fclient%252FT3X4CAKNU%252FC3XTEGXB6%26teams%3DTASA2Q716
 ${BROWSER}     Chrome
 ${EMAILINPUT}  xpath=//*[@id='login']
